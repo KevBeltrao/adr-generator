@@ -32,7 +32,7 @@ function App() {
       <header>
         <form onSubmit={handleSubmit}>
           <textarea
-            placeholder="Describe your architecture"
+            placeholder="Describe the architecture change decision"
             className="prompt"
             value={inputValue}
             onChange={(event) => setInputValue(event.target.value)}

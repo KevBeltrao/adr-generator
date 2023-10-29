@@ -8,10 +8,13 @@ app.use(express.json());
 app.use(cors());
 
 app.post('/openai', async (req: Request, res: Response) => {
-  const response = await requestOpenAI(req.body.description);
-
-  const { text } = response.data.choices[0];
-  res.send({ markdown: text });
+  try {
+    const response = await requestOpenAI(req.body.description);
+  
+    res.send({ markdown: response });
+  } catch (error) {
+    res.status(400).send({ error });
+  }
 });
 
 app.use(express.json());
